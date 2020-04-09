@@ -1,0 +1,121 @@
+2020-04-09T00:00:11.3576766+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: POST https localhost:44321/api/v1/Users  {"firstName":"koren2","lastName":"siso","dateOfBirth":"2020-04-07T20:56:21.982Z"} 
+                                                     Responded with [201] in 97672ms
+2020-04-09T00:02:34.5359643+03:00 [INF] (Sporty.Services.Users.Program) Starting web host
+2020-04-09T00:02:58.0004728+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: POST https localhost:44321/api/v1/Users  {"firstName":"koren","lastName":"siso","dateOfBirth":"2020-04-08T21:02:42.702Z"} 
+                                                     Responded with [201] in 8091ms
+2020-04-09T00:03:57.3928030+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: POST https localhost:44321/api/v1/Users  {"firstName":"koren","lastName":"siso","dateOfBirth":"2020-04-08T21:02:42.702Z"} 
+                                                     Responded with [201] in 6343ms
+2020-04-09T00:06:38.3876562+03:00 [INF] (Sporty.Services.Users.Program) Starting web host
+2020-04-09T00:07:20.1308086+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: POST https localhost:44321/api/v1/Users  {"firstName":"koren","lastName":"siso","dateOfBirth":"2020-04-08T21:06:44.363Z"} 
+                                                     Responded with [201] in 26900ms
+2020-04-09T00:09:41.3271560+03:00 [INF] (Sporty.Services.Users.Program) Starting web host
+2020-04-09T00:09:51.5972421+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users   
+                                                     Responded with [200] in 1166ms
+2020-04-09T00:10:24.0926722+03:00 [INF] (IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler) AuthenticationScheme: "Bearer" was challenged.
+2020-04-09T00:10:24.1160818+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: POST https localhost:44321/api/v1/SampleApi  {"firstName":"string","lastName":"string"} 
+                                                     Responded with [401] in 92ms
+2020-04-09T00:10:44.2727696+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: POST https localhost:44321/api/v1/Users  {"firstName":"string","lastName":"string","dateOfBirth":"2020-04-08T21:10:42.842Z"} 
+                                                     Responded with [500] in 211ms
+2020-04-09T00:12:53.8142838+03:00 [INF] (Sporty.Services.Users.Program) Starting web host
+2020-04-09T00:13:13.2956965+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users   
+                                                     Responded with [200] in 1477ms
+2020-04-09T00:13:31.2378892+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: POST https localhost:44321/api/v1/Users  {"firstName":"string","lastName":"string","dateOfBirth":"2020-04-07T21:13:20.056Z"} 
+                                                     Responded with [201] in 7187ms
+2020-04-09T00:14:19.1459908+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users/d3d8033f-e77e-438f-a77d-4047563ce401   
+                                                     Responded with [500] in 1182ms
+2020-04-09T00:15:54.0913358+03:00 [INF] (Sporty.Services.Users.Program) Starting web host
+2020-04-09T00:16:00.4068150+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users   
+                                                     Responded with [200] in 1524ms
+2020-04-09T00:16:38.4572835+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: POST https localhost:44321/api/v1/Users  {"firstName":"string","lastName":"string","dateOfBirth":"2020-04-08T21:16:13.165Z"} 
+                                                     Responded with [201] in 23904ms
+2020-04-09T00:17:10.5547546+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users/92fc09bd-da77-461c-b2cf-75d32b7eb7b5   
+                                                     Responded with [200] in 2182ms
+2020-04-09T00:17:27.5741200+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users/92fc09bd-da77-461c-b2cf-75d32b7eb7b9   
+                                                     Responded with [404] in 673ms
+2020-04-09T00:17:36.9491606+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users/bd09fc92-77da-1c46-b2cf-75d32b7eb7b5   
+                                                     Responded with [404] in 434ms
+2020-04-09T00:17:59.3945443+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users   
+                                                     Responded with [200] in 3670ms
+2020-04-09T00:18:50.1305430+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: PUT https localhost:44321/api/v1/Users/92fc09bd-da77-461c-b2cf-75d32b7eb7b5  {"firstName":"koren","lastName":"siso","dateOfBirth":"2019-04-08T21:18:24.034Z"} 
+                                                     Responded with [200] in 3862ms
+2020-04-09T15:06:49.6511942+03:00 [INF] (Sporty.Services.Users.Program) Starting web host
+2020-04-09T15:07:11.8239470+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users   
+                                                     Responded with [200] in 1584ms
+2020-04-09T15:07:31.9206167+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: POST https localhost:44321/api/v1/Users  {"firstName":"string","lastName":"string","dateOfBirth":"2020-04-09T12:07:20.733Z"} 
+                                                     Responded with [201] in 4680ms
+2020-04-09T15:07:53.1569116+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users   
+                                                     Responded with [200] in 51ms
+2020-04-09T15:08:11.1503107+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users/aad24088-f43f-4b51-821e-012dba31dc3e   
+                                                     Responded with [200] in 70ms
+2020-04-09T15:08:49.2442051+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: PUT https localhost:44321/api/v1/Users/aad24088-f43f-4b51-821e-012dba31dc3e  {"firstName":"Koren","lastName":"Siso","dateOfBirth":"1988-14-07T12:08:28.584Z"} 
+                                                     Responded with [422] in 592ms
+2020-04-09T15:21:23.2649040+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: PUT https localhost:44321/api/v1/Users/aad24088-f43f-4b51-821e-012dba31dc3e  {"firstName":"Koren","lastName":"Siso","dateOfBirth":"2020-04-09T12:07:20.733Z"} 
+                                                     Responded with [422] in 396ms
+2020-04-09T15:21:37.0052853+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: PUT https localhost:44321/api/v1/Users/aad24088-f43f-4b51-821e-012dba31dc3e  {"firstName":"Koren","lastName":"Siso","dateOfBirth":"2020-04-08T12:07:20.733Z"} 
+                                                     Responded with [200] in 44ms
+2020-04-09T15:22:08.0724965+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users   
+                                                     Responded with [200] in 11ms
+2020-04-09T15:22:41.2263674+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: PUT https localhost:44321/api/v1/Users/aad24088-f43f-4b51-821e-012dba31dc3e  {"firstName":"Koren","lastName":"Siso","dateOfBirth":"1988-07-14T12:07:20.733Z"} 
+                                                     Responded with [200] in 26ms
+2020-04-09T15:23:26.7950718+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: POST https localhost:44321/api/v1/Users  {"firstName":"Nofar","lastName":"Siso","dateOfBirth":"1988-07-17T12:07:20.733Z"} 
+                                                     Responded with [201] in 2683ms
+2020-04-09T15:23:36.8663625+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users   
+                                                     Responded with [200] in 12ms
+2020-04-09T15:23:40.7794361+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users   
+                                                     Responded with [200] in 10ms
+2020-04-09T15:24:07.4163339+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users/paged ?PageNumber=0&PageSize=1&IncludeCount=true  
+                                                     Responded with [200] in 53ms
+2020-04-09T15:24:15.9721475+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users/paged ?PageSize=1&IncludeCount=true  
+                                                     Responded with [200] in 11ms
+2020-04-09T15:24:29.9682946+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users/paged ?PageNumber=0&PageSize=1&IncludeCount=true  
+                                                     Responded with [200] in 10ms
+2020-04-09T15:24:44.4493529+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users/paged ?PageNumber=0&PageSize=3&IncludeCount=true  
+                                                     Responded with [200] in 11ms
+2020-04-09T15:25:05.3214516+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users/paged ?PageNumber=0&PageSize=3&IncludeCount=false  
+                                                     Responded with [200] in 27ms
+2020-04-09T15:25:38.2388887+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users/paged ?PageNumber=1&PageSize=3&IncludeCount=false  
+                                                     Responded with [200] in 13ms
+2020-04-09T15:25:50.4825040+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users/paged ?IncludeCount=true  
+                                                     Responded with [200] in 11ms
+2020-04-09T17:56:52.4694245+03:00 [INF] (Sporty.Services.Users.Program) Starting web host
+2020-04-09T18:23:30.0034194+03:00 [INF] (Sporty.Services.Users.Program) Starting web host
+2020-04-09T23:35:21.1983270+03:00 [INF] (Sporty.Services.Users.Program) Starting web host
+2020-04-09T23:35:30.7643209+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44321/api/v1/Users   
+                                                     Responded with [200] in 1549ms

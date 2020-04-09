@@ -1,0 +1,99 @@
+2020-04-08T23:44:25.1029420+03:00 [ERR] (AutoWrapper.AutoWrapperMiddleware) [422]: https://httpstatuses.com/422 : Unprocessable Entity
+Type    : https://httpstatuses.com/422
+Title   : Unprocessable Entity
+Status  : 422
+Detail  : Your request parameters didn't validate.
+Instance: /api/v1/Users/1930e59f-6d14-4c13-a494-f13957f15024
+
+2020-04-08T23:44:35.9416460+03:00 [ERR] (AutoWrapper.AutoWrapperMiddleware) [404]: https://httpstatuses.com/404 : Record with Id: 1930e59f-6d14-4c13-a494-f13957f15024 does not exist.
+Type    : https://httpstatuses.com/404
+Title   : Record with Id: 1930e59f-6d14-4c13-a494-f13957f15024 does not exist.
+Status  : 404
+Detail  : 
+Instance: /api/v1/Users/1930e59f-6d14-4c13-a494-f13957f15024
+
+2020-04-08T23:47:25.6076308+03:00 [ERR] (AutoWrapper.AutoWrapperMiddleware) [404]: https://httpstatuses.com/404 : Record with Id: 1930e59f-6d14-4c13-a494-f13957f15024 does not exist.
+Type    : https://httpstatuses.com/404
+Title   : Record with Id: 1930e59f-6d14-4c13-a494-f13957f15024 does not exist.
+Status  : 404
+Detail  : 
+Instance: /api/v1/Users/1930e59f-6d14-4c13-a494-f13957f15024
+
+2020-04-08T23:49:48.7216436+03:00 [ERR] (AutoWrapper.AutoWrapperMiddleware) [500]: Element '_id' does not match any field or property of class Sporty.Services.Users.Data.Entity.User.
+System.FormatException: Element '_id' does not match any field or property of class Sporty.Services.Users.Data.Entity.User.
+   at MongoDB.Bson.Serialization.BsonClassMapSerializer`1.DeserializeClass(BsonDeserializationContext context)
+   at MongoDB.Bson.Serialization.BsonClassMapSerializer`1.Deserialize(BsonDeserializationContext context, BsonDeserializationArgs args)
+   at MongoDB.Bson.Serialization.IBsonSerializerExtensions.Deserialize[TValue](IBsonSerializer`1 serializer, BsonDeserializationContext context)
+   at MongoDB.Driver.Core.Operations.CursorBatchDeserializationHelper.DeserializeBatch[TDocument](RawBsonArray batch, IBsonSerializer`1 documentSerializer, MessageEncoderSettings messageEncoderSettings)
+   at MongoDB.Driver.Core.Operations.FindCommandOperation`1.CreateCursorBatch(BsonDocument commandResult)
+   at MongoDB.Driver.Core.Operations.FindCommandOperation`1.CreateCursor(IChannelSourceHandle channelSource, BsonDocument commandResult)
+   at MongoDB.Driver.Core.Operations.FindCommandOperation`1.ExecuteAsync(RetryableReadContext context, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.FindOperation`1.ExecuteAsync(RetryableReadContext context, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.FindOperation`1.ExecuteAsync(IReadBinding binding, CancellationToken cancellationToken)
+   at MongoDB.Driver.OperationExecutor.ExecuteReadOperationAsync[TResult](IReadBinding binding, IReadOperation`1 operation, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.ExecuteReadOperationAsync[TResult](IClientSessionHandle session, IReadOperation`1 operation, ReadPreference readPreference, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at Sporty.Infra.Data.Accessor.Mongo.Repository.MongoRepository`2.GetAsync() in C:\projects\eng\sporty\Sporty\Infra\Sporty.Infra.Data.Accessor\Mongo\Repository\MongoRepository.cs:line 128
+   at Sporty.Services.Users.Data.Managers.UserManager.GetAllAsync() in C:\projects\eng\sporty\Sporty\Services\Sporty.Services.Users\Data\Managers\UserManager.cs:line 33
+   at Sporty.Services.Users.API.v1.UsersController.Get() in C:\projects\eng\sporty\Sporty\Services\Sporty.Services.Users\API\v1\UsersController.cs:line 36
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context)
+   at AutoWrapper.Base.WrapperBase.InvokeAsyncBase(HttpContext context, AutoWrapperMembers awm)
+2020-04-08T23:54:40.1962340+03:00 [ERR] (AutoWrapper.AutoWrapperMiddleware) [500]: ObjectId is not a valid representation for a GuidSerializer.
+System.ArgumentException: ObjectId is not a valid representation for a GuidSerializer.
+   at MongoDB.Bson.Serialization.Serializers.GuidSerializer..ctor(BsonType representation)
+   at MongoDB.Bson.Serialization.Serializers.GuidSerializer.WithRepresentation(BsonType representation)
+   at MongoDB.Bson.Serialization.Serializers.GuidSerializer.MongoDB.Bson.Serialization.IRepresentationConfigurable.WithRepresentation(BsonType representation)
+   at MongoDB.Bson.Serialization.Attributes.BsonRepresentationAttribute.Apply(IBsonSerializer serializer)
+   at MongoDB.Bson.Serialization.Attributes.BsonSerializationOptionsAttribute.Apply(BsonMemberMap memberMap)
+   at MongoDB.Bson.Serialization.Conventions.AttributeConventionPack.AttributeConvention.Apply(BsonMemberMap memberMap)
+   at MongoDB.Bson.Serialization.Conventions.ConventionRunner.Apply(BsonClassMap classMap)
+   at MongoDB.Bson.Serialization.BsonClassMap.AutoMapClass()
+   at MongoDB.Bson.Serialization.BsonClassMap.AutoMap()
+   at MongoDB.Bson.Serialization.BsonClassMap.LookupClassMap(Type classType)
+   at MongoDB.Bson.Serialization.BsonClassMap.Freeze()
+   at MongoDB.Bson.Serialization.BsonClassMap.LookupClassMap(Type classType)
+   at MongoDB.Bson.Serialization.BsonClassMapSerializationProvider.GetSerializer(Type type, IBsonSerializerRegistry serializerRegistry)
+   at MongoDB.Bson.Serialization.BsonSerializerRegistry.CreateSerializer(Type type)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at MongoDB.Bson.Serialization.BsonSerializerRegistry.GetSerializer(Type type)
+   at MongoDB.Bson.Serialization.BsonSerializerRegistry.GetSerializer[T]()
+   at MongoDB.Driver.MongoCollectionImpl`1..ctor(IMongoDatabase database, CollectionNamespace collectionNamespace, MongoCollectionSettings settings, ICluster cluster, IOperationExecutor operationExecutor)
+   at MongoDB.Driver.MongoDatabaseImpl.GetCollection[TDocument](String name, MongoCollectionSettings settings)
+   at Sporty.Infra.Data.Accessor.Mongo.Repository.MongoRepository`2.Init(String collectionName) in C:\projects\eng\sporty\Sporty\Infra\Sporty.Infra.Data.Accessor\Mongo\Repository\MongoRepository.cs:line 35
+   at Sporty.Services.Users.Data.Managers.UserManager..ctor(IConfiguration config, ILogger`1 logger) in C:\projects\eng\sporty\Sporty\Services\Sporty.Services.Users\Data\Managers\UserManager.cs:line 28
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitDisposeCache(ServiceCallSite transientCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context)
+   at AutoWrapper.Base.WrapperBase.InvokeAsyncBase(HttpContext context, AutoWrapperMembers awm)

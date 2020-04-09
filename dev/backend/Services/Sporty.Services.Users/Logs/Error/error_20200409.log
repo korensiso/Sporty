@@ -1,0 +1,118 @@
+2020-04-09T00:10:44.2560885+03:00 [ERR] (AutoWrapper.AutoWrapperMiddleware) [500]: The property 'System.String Id' of class 'Sporty.Infra.Data.Accessor.Mongo.Repository.Document' has no 'set' accessor. To avoid this exception, call IsReadOnly to ensure that setting a value is allowed.
+MongoDB.Bson.BsonSerializationException: The property 'System.String Id' of class 'Sporty.Infra.Data.Accessor.Mongo.Repository.Document' has no 'set' accessor. To avoid this exception, call IsReadOnly to ensure that setting a value is allowed.
+   at MongoDB.Bson.Serialization.BsonMemberMap.GetPropertySetter()
+   at MongoDB.Bson.Serialization.BsonMemberMap.get_Setter()
+   at MongoDB.Bson.Serialization.BsonClassMapSerializer`1.SetDocumentId(Object document, Object id)
+   at MongoDB.Driver.MongoCollectionImpl`1.AssignId(TDocument document)
+   at MongoDB.Driver.MongoCollectionImpl`1.ConvertWriteModelToWriteRequest(WriteModel`1 model, Int32 index)
+   at System.Linq.Enumerable.SelectIterator[TSource,TResult](IEnumerable`1 source, Func`3 selector)+MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at MongoDB.Driver.Core.Operations.BulkMixedWriteOperation..ctor(CollectionNamespace collectionNamespace, IEnumerable`1 requests, MessageEncoderSettings messageEncoderSettings)
+   at MongoDB.Driver.MongoCollectionImpl`1.CreateBulkWriteOperation(IClientSessionHandle session, IEnumerable`1 requests, BulkWriteOptions options)
+   at MongoDB.Driver.MongoCollectionImpl`1.BulkWriteAsync(IClientSessionHandle session, IEnumerable`1 requests, BulkWriteOptions options, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionBase`1.InsertOneAsync(TDocument document, InsertOneOptions options, Func`3 bulkWriteAsync)
+   at Sporty.Infra.Data.Accessor.Mongo.Repository.MongoRepository`2.AddAsync(TDocument entity) in C:\projects\eng\sporty\Sporty\Infra\Sporty.Infra.Data.Accessor\Mongo\Repository\MongoRepository.cs:line 49
+   at Sporty.Services.Users.Data.Managers.UserManager.CreateAsync(User entity) in C:\projects\eng\sporty\Sporty\Services\Sporty.Services.Users\Data\Managers\UserManager.cs:line 46
+   at Sporty.Services.Users.API.v1.UsersController.Post(CreateUserRequest createRequest) in C:\projects\eng\sporty\Sporty\Services\Sporty.Services.Users\API\v1\UsersController.cs:line 74
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context)
+   at AutoWrapper.Base.WrapperBase.InvokeAsyncBase(HttpContext context, AutoWrapperMembers awm)
+2020-04-09T00:14:19.1318338+03:00 [ERR] (AutoWrapper.AutoWrapperMiddleware) [500]: Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+User -> UserQueryResponse
+Sporty.Services.Users.Data.Entity.User -> Sporty.Services.Users.DTO.Response.UserQueryResponse
+
+Type Map configuration:
+User -> UserQueryResponse
+Sporty.Services.Users.Data.Entity.User -> Sporty.Services.Users.DTO.Response.UserQueryResponse
+
+Destination Member:
+ID
+
+ ---> System.FormatException: Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+   at System.Guid.GuidResult.SetFailure(Boolean overflow, String failureMessageID)
+   at System.Guid.TryParseExactN(ReadOnlySpan`1 guidString, GuidResult& result)
+   at System.Guid.TryParseGuid(ReadOnlySpan`1 guidString, GuidResult& result)
+   at System.Guid..ctor(String g)
+   at System.ComponentModel.GuidConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   at System.ComponentModel.TypeConverter.ConvertFrom(Object value)
+   at AutoMapper.Mappers.TypeConverterMapper.Map[TSource,TDestination](TSource source)
+   at lambda_method(Closure , User , UserQueryResponse , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , User , UserQueryResponse , ResolutionContext )
+   at lambda_method(Closure , Object , Object , ResolutionContext )
+   at Sporty.Services.Users.API.v1.UsersController.Get(Guid id) in C:\projects\eng\sporty\Sporty\Services\Sporty.Services.Users\API\v1\UsersController.cs:line 62
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context)
+   at AutoWrapper.Base.WrapperBase.InvokeAsyncBase(HttpContext context, AutoWrapperMembers awm)
+2020-04-09T00:17:27.5601270+03:00 [ERR] (AutoWrapper.AutoWrapperMiddleware) [404]: https://httpstatuses.com/404 : Record with id: 92fc09bd-da77-461c-b2cf-75d32b7eb7b9 does not exist.
+Type    : https://httpstatuses.com/404
+Title   : Record with id: 92fc09bd-da77-461c-b2cf-75d32b7eb7b9 does not exist.
+Status  : 404
+Detail  : 
+Instance: /api/v1/Users/92fc09bd-da77-461c-b2cf-75d32b7eb7b9
+
+2020-04-09T00:17:36.9483369+03:00 [ERR] (AutoWrapper.AutoWrapperMiddleware) [404]: https://httpstatuses.com/404 : Record with id: bd09fc92-77da-1c46-b2cf-75d32b7eb7b5 does not exist.
+Type    : https://httpstatuses.com/404
+Title   : Record with id: bd09fc92-77da-1c46-b2cf-75d32b7eb7b5 does not exist.
+Status  : 404
+Detail  : 
+Instance: /api/v1/Users/bd09fc92-77da-1c46-b2cf-75d32b7eb7b5
+
+2020-04-09T15:08:49.2309899+03:00 [ERR] (AutoWrapper.AutoWrapperMiddleware) [422]: https://httpstatuses.com/422 : Unprocessable Entity
+Type    : https://httpstatuses.com/422
+Title   : Unprocessable Entity
+Status  : 422
+Detail  : Your request parameters didn't validate.
+Instance: /api/v1/Users/aad24088-f43f-4b51-821e-012dba31dc3e
+
+2020-04-09T15:21:23.2639076+03:00 [ERR] (AutoWrapper.AutoWrapperMiddleware) [422]: https://httpstatuses.com/422 : Unprocessable Entity
+Type    : https://httpstatuses.com/422
+Title   : Unprocessable Entity
+Status  : 422
+Detail  : Your request parameters didn't validate.
+Instance: /api/v1/Users/aad24088-f43f-4b51-821e-012dba31dc3e
+
+2020-04-09T17:56:55.2031757+03:00 [FTL] (Microsoft.AspNetCore.Hosting.Diagnostics) Application startup exception
+System.InvalidOperationException: Unable to resolve service for type 'AspNetCoreRateLimit.IRateLimitCounterStore' while attempting to activate 'AspNetCoreRateLimit.IpRateLimitMiddleware'.
+   at Microsoft.Extensions.Internal.ActivatorUtilities.ConstructorMatcher.CreateInstance(IServiceProvider provider)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass4_0.<UseMiddleware>b__0(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2020-04-09T18:23:30.3538215+03:00 [FTL] (Microsoft.AspNetCore.Hosting.Diagnostics) Application startup exception
+System.InvalidOperationException: Unable to resolve service for type 'AspNetCoreRateLimit.IRateLimitCounterStore' while attempting to activate 'AspNetCoreRateLimit.IpRateLimitMiddleware'.
+   at Microsoft.Extensions.Internal.ActivatorUtilities.ConstructorMatcher.CreateInstance(IServiceProvider provider)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass4_0.<UseMiddleware>b__0(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
