@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace Sporty.Infra.WebApi.Infrastructure.Extensions
+namespace Sporty.Infra.WebApi.Extensions
 {
     public static class TypeConverterExtension
     {

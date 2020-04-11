@@ -13,7 +13,13 @@ namespace Sporty.Services.Groups.Bootstrap
         public static void AddServicesInAssembly(this IServiceCollection services, IConfiguration configuration)
         {
             var appServices = new List<IServiceRegistration>();
-            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+            var assemblies = new List<Assembly>
+            {
+                typeof(Startup).Assembly,
+                AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(asm => asm.FullName.Contains("sporty.infra", StringComparison.InvariantCultureIgnoreCase))
+            };
+
+            foreach (Assembly assembly in assemblies)
             {
                 IEnumerable<IServiceRegistration> appServicesInAssembly = assembly.DefinedTypes
                     .Where(x => typeof(IServiceRegistration)
@@ -23,7 +29,6 @@ namespace Sporty.Services.Groups.Bootstrap
 
                 appServices.AddRange(appServicesInAssembly);
             }
-
 
             appServices.ForEach(svc => svc.RegisterAppServices(services, configuration));
         }

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Sporty.Infra.WebApi.Contracts;
 
-namespace Sporty.Infra.WebApi.Infrastructure.Installers
+namespace Sporty.Infra.WebApi.Installers
 {
     internal class RegisterCors : IServiceRegistration
     {

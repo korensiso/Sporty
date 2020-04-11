@@ -24,13 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Infrastructure\HealthChecks\Ux\branding.css">
+    <None Update="HealthChecks\Ux\branding.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Infrastructure\Handlers\" />
   </ItemGroup>
 
 </Project>

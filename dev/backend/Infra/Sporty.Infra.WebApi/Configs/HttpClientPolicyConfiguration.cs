@@ -1,4 +1,4 @@
-﻿namespace Sporty.Infra.WebApi.Infrastructure.Configs
+﻿namespace Sporty.Infra.WebApi.Configs
 {
     public class HttpClientPolicyConfiguration
     {

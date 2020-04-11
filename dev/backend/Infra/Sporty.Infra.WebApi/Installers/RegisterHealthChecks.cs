@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sporty.Infra.WebApi.Contracts;
-using Sporty.Infra.WebApi.Infrastructure.HealthChecks;
+using Sporty.Infra.WebApi.HealthChecks;
 
-namespace Sporty.Infra.WebApi.Infrastructure.Installers
+namespace Sporty.Infra.WebApi.Installers
 {
     internal class RegisterHealthChecks : IServiceRegistration
     {

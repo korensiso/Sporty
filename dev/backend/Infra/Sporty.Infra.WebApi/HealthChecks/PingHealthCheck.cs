@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace Sporty.Infra.WebApi.Infrastructure.HealthChecks
+namespace Sporty.Infra.WebApi.HealthChecks
 {
     internal class PingHealthCheck : IHealthCheck
     {

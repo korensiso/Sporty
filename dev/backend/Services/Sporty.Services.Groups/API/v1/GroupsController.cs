@@ -94,22 +94,22 @@ namespace Sporty.Services.Groups.API.v1
             throw new ApiProblemDetailsException($"Record with Id: {id} does not exist.", Status404NotFound);
         }
 
-        [Route("{id:Guid/users}")]
-        [HttpPut]
-        [ProducesResponseType(typeof(ApiResponse), Status200OK)]
-        [ProducesResponseType(typeof(ApiResponse), Status404NotFound)]
-        [ProducesResponseType(typeof(ApiResponse), Status422UnprocessableEntity)]
-        public async Task<ApiResponse> Put(Guid id, [FromBody] UpdateGroupUsersRequest updateGroupUsersRequest)
-        {
-            if (!ModelState.IsValid) { throw new ApiProblemDetailsException(ModelState); }
+        //[Route("{id:Guid/users}")]
+        //[HttpPut]
+        //[ProducesResponseType(typeof(ApiResponse), Status200OK)]
+        //[ProducesResponseType(typeof(ApiResponse), Status404NotFound)]
+        //[ProducesResponseType(typeof(ApiResponse), Status422UnprocessableEntity)]
+        //public async Task<ApiResponse> Put(Guid id, [FromBody] UpdateGroupUsersRequest updateGroupUsersRequest)
+        //{
+        //    if (!ModelState.IsValid) { throw new ApiProblemDetailsException(ModelState); }
 
-            if (await _groupManager.UpdateGroupUsersAsync(id, updateGroupUsersRequest.Users))
-            {
-                return new ApiResponse($"Record with Id: {id} successfully updated.", true);
-            }
+        //    if (await _groupManager.UpdateGroupUsersAsync(id, updateGroupUsersRequest.Users))
+        //    {
+        //        return new ApiResponse($"Record with Id: {id} successfully updated.", true);
+        //    }
 
-            throw new ApiProblemDetailsException($"Record with Id: {id} does not exist.", Status404NotFound);
-        }
+        //    throw new ApiProblemDetailsException($"Record with Id: {id} does not exist.", Status404NotFound);
+        //}
 
 
         [Route("{id:Guid}")]

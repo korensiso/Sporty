@@ -1,7 +1,7 @@
 ﻿using System;
 using FluentValidation;
 using Sporty.Common.Dto.User.Request;
-using Sporty.Infra.WebApi.Infrastructure.Helpers;
+using Sporty.Infra.WebApi.Helpers;
 
 namespace Sporty.Services.Users.DTO.Request.Validation
 {

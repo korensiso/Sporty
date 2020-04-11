@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Sporty.Infra.WebApi.Infrastructure.Filters
+namespace Sporty.Infra.WebApi.Filters
 {
     public class SwaggerAuthorizeCheckOperationFilter : IOperationFilter
     {

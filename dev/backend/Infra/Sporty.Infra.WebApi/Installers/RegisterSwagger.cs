@@ -2,9 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Sporty.Infra.WebApi.Contracts;
-using Sporty.Infra.WebApi.Infrastructure.Filters;
+using Sporty.Infra.WebApi.Filters;
 
-namespace Sporty.Infra.WebApi.Infrastructure.Installers
+namespace Sporty.Infra.WebApi.Installers
 {
     internal class RegisterSwagger : IServiceRegistration
     {
