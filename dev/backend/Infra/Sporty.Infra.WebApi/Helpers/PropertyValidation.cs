@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sporty.Infra.WebApi.Infrastructure.Helpers
+namespace Sporty.Infra.WebApi.Helpers
 {
     public static class PropertyValidation
     {

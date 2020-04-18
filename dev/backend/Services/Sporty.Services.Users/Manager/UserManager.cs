@@ -4,28 +4,30 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Sporty.Common.Dto.User.Model;
 using Sporty.Common.Network.Http.QueryUrl;
-using Sporty.Infra.Data.Accessor.Mongo.Interfaces;
 using Sporty.Infra.Data.Accessor.Mongo.Models;
 using Sporty.Infra.Data.Accessor.Mongo.Repository;
+using Sporty.Services.Users.DTO;
 
 namespace Sporty.Services.Users.Manager
 {
     internal class UserManager : IUserManager
     {
+        private const string c_collectionName = "users";
         private readonly ILogger<UserManager> _logger;
-        private readonly IMongoConfiguration _mongoConfiguration;
         private readonly MongoRepository<User, Guid> _usersRepo;
 
-        public UserManager(IConfiguration config, ILogger<UserManager> logger)
+        public UserManager(IOptions<MongoConfiguration> options, ILogger<UserManager> logger)
         {
+            MongoConfiguration mongoConfiguration = options.Value;
+            
             _logger = logger;
+            _usersRepo = new MongoRepository<User, Guid>(mongoConfiguration); 
+            _usersRepo.Init(c_collectionName);
 
-            string connectionString = string.Format(config.GetConnectionString("SQLDBConnectionString"), "localhost", "27017");
-            _mongoConfiguration = new MongoConfiguration(connectionString, "sporty");
-            _usersRepo = new MongoRepository<User, Guid>(_mongoConfiguration); 
-            _usersRepo.Init("Users");
+            _logger.LogInformation($"Initiated connection: {mongoConfiguration}");
         }
 
         public async Task<IEnumerable<User>> GetAllAsync()

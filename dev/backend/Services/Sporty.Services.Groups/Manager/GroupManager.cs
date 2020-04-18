@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Sporty.Common.Dto.Group.Model;
 using Sporty.Common.Network.Http.QueryUrl;
-using Sporty.Infra.Data.Accessor.Mongo.Interfaces;
 using Sporty.Infra.Data.Accessor.Mongo.Models;
 using Sporty.Infra.Data.Accessor.Mongo.Repository;
 
@@ -14,18 +13,19 @@ namespace Sporty.Services.Groups.Manager
 {
     internal class GroupManager : IGroupManager
     {
+        private const string c_collectionName = "groups";
         private readonly ILogger<GroupManager> _logger;
-        private readonly IMongoConfiguration _mongoConfiguration;
         private readonly MongoRepository<Group, Guid> _groupsRepo;
 
-        public GroupManager(IConfiguration config, ILogger<GroupManager> logger)
+        public GroupManager(IOptions<MongoConfiguration> options, ILogger<GroupManager> logger)
         {
-            _logger = logger;
+            MongoConfiguration mongoConfiguration = options.Value;
 
-            string connectionString = string.Format(config.GetConnectionString("SQLDBConnectionString"), "localhost", "27017");
-            _mongoConfiguration = new MongoConfiguration(connectionString, "sporty");
-            _groupsRepo = new MongoRepository<Group, Guid>(_mongoConfiguration); 
-            _groupsRepo.Init("Groups");
+            _logger = logger;
+            _groupsRepo = new MongoRepository<Group, Guid>(mongoConfiguration);
+            _groupsRepo.Init(c_collectionName);
+
+            _logger.LogInformation($"Initiated connection: {mongoConfiguration}");
         }
 
         public async Task<IEnumerable<Group>> GetAllAsync()

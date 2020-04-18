@@ -16,8 +16,10 @@ namespace Sporty.Services.Groups.Bootstrap
             var assemblies = new List<Assembly>
             {
                 typeof(Startup).Assembly,
-                AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(asm => asm.FullName.Contains("sporty.infra", StringComparison.InvariantCultureIgnoreCase))
             };
+
+            assemblies.AddRange(AppDomain.CurrentDomain.GetAssemblies()
+                .Where(asm => asm.FullName.Contains("sporty.infra", StringComparison.InvariantCultureIgnoreCase)));
 
             foreach (Assembly assembly in assemblies)
             {

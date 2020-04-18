@@ -7,22 +7,31 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Sporty.Services.Groups.DTO.Mapping;
+using Sporty.Infra.Data.Accessor.Mongo.Models;
+using Sporty.Services.Users.Bootstrap;
+using Sporty.Services.Users.DTO.Mapping;
 
-namespace Sporty.Services.Groups.Bootstrap
+namespace Sporty.Services.Users
 {
     internal class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", false, true)
+                .AddEnvironmentVariables()
+                .Build();
+
+            services.AddOptions();
+            services.Configure<MongoConfiguration>(Configuration.GetSection(nameof(MongoConfiguration)));
 
             //Register services in Installers folder
             services.AddServicesInAssembly(Configuration);
@@ -56,7 +65,7 @@ namespace Sporty.Services.Groups.Bootstrap
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "GroupsService ASP.NET Core API v1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "UserService ASP.NET Core API v1");
             });
 
             //Enable HealthChecks and UI

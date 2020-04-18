@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
-using Sporty.Services.Groups.Bootstrap;
 
 namespace Sporty.Services.Groups
 {
@@ -17,7 +16,7 @@ namespace Sporty.Services.Groups
             var logger = builder.Services.GetService<ILogger<Program>>();
             try
             {
-                logger.LogInformation("Starting web host");
+                logger.LogInformation($"Starting web host - {typeof(Program).Assembly.GetName().Name}");
                 builder.Run();
             }
             catch (Exception ex)

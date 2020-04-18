@@ -10,13 +10,11 @@ namespace Sporty.Infra.WebApi.Installers
     {
         public void RegisterAppServices(IServiceCollection services, IConfiguration config)
         {
-            // needed to load configuration from appsettings.json
-            services.AddOptions();
             // needed to store rate limit counters and ip rules
             services.AddMemoryCache();
 
             //load general configuration from appsettings.json
-            services.Configure<IpRateLimitOptions>(config.GetSection("IpRateLimiting"));
+            services.Configure<IpRateLimitOptions>(config.GetSection(nameof(IpRateLimitOptions)));
 
             // inject counter and rules stores
             services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();

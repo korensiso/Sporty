@@ -8,8 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Polly;
 using Polly.Extensions.Http;
 using Sporty.Common.Network.Http;
+using Sporty.Infra.WebApi.Configs;
 using Sporty.Infra.WebApi.Contracts;
-using Sporty.Infra.WebApi.Infrastructure.Configs;
 using Sporty.Services.Groups.Contracts;
 using Sporty.Services.Groups.Services;
 

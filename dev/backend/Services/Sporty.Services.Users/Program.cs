@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
-using Sporty.Services.Users.Bootstrap;
 
 namespace Sporty.Services.Users
 {
@@ -17,7 +16,7 @@ namespace Sporty.Services.Users
             var logger = builder.Services.GetService<ILogger<Program>>();
             try
             {
-                logger.LogInformation("Starting web host");
+                logger.LogInformation($"Starting web host - {typeof(Program).Assembly.GetName().Name}");
                 builder.Run();
             }
             catch (Exception ex)
@@ -29,7 +28,8 @@ namespace Sporty.Services.Users
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureHostConfiguration(configBuilder =>
-                    configBuilder.AddJsonFile("appsettings.Logs.json", true, true)
+                    configBuilder
+                        .AddJsonFile("appsettings.Logs.json", true, true)
                 )
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
