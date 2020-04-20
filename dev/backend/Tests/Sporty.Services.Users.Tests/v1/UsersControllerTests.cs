@@ -6,9 +6,11 @@ using AutoMapper;
 using AutoWrapper.Wrappers;
 using Microsoft.Extensions.Logging;
 using Moq;
+using Sporty.Common.Dto.Events.User;
 using Sporty.Common.Dto.User.Model;
 using Sporty.Common.Dto.User.Request;
 using Sporty.Common.Dto.User.Response;
+using Sporty.Infra.Data.Accessor.RabbitMQ.Interfaces;
 using Sporty.Services.Users.API.v1;
 using Sporty.Services.Users.DTO.Mapping;
 using Sporty.Services.Users.Manager;
@@ -20,6 +22,7 @@ namespace Sporty.Services.Users.Tests.v1
     public class UsersControllerTests
     {
         private readonly Mock<IUserManager> _userManager;
+        private readonly Mock<IEventBus> _eventBus;
         private readonly UsersController _controller;
 
         public UsersControllerTests()
@@ -31,8 +34,9 @@ namespace Sporty.Services.Users.Tests.v1
             var mapper = new Mapper(configuration);
 
             _userManager = new Mock<IUserManager>();
+            _eventBus = new Mock<IEventBus>();
 
-            _controller = new UsersController(_userManager.Object, mapper, logger);
+            _controller = new UsersController(_userManager.Object, mapper, _eventBus.Object, logger);
         }
 
         private static IEnumerable<User> GetFakeUserLists()
@@ -132,14 +136,22 @@ namespace Sporty.Services.Users.Tests.v1
         [Fact]
         public async Task Post_UserNotExists_Ok()
         {
-
+            CreateUserRequest fakeCreateRequestObject = FakeCreateRequestObject();
             _userManager.Setup(manager => manager.CreateAsync(It.IsAny<User>()))
                 .ReturnsAsync(It.IsAny<Guid>());
+            _userManager.Setup(manager => manager.GetByIdAsync(It.IsAny<Guid>()))
+                .ReturnsAsync(new User 
+                    { 
+                        Identifier = Guid.NewGuid(), 
+                        FirstName = fakeCreateRequestObject.FirstName, 
+                        LastName = FakeCreateRequestObject().LastName
+                    });
 
-            ApiResponse response = await _controller.Post(FakeCreateRequestObject());
+            ApiResponse response = await _controller.Post(fakeCreateRequestObject);
 
             ApiResponse apiResponse = Assert.IsType<ApiResponse>(response);
             Assert.Equal(201, apiResponse.StatusCode);
+            _eventBus.Verify(mock => mock.Publish(It.IsAny<UserCreatedEvent>()));
         }
 
         [Fact]

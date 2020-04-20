@@ -12,14 +12,9 @@ namespace Sporty.Infra.Data.Accessor.Mongo.Repository
         [BsonElement("_id", Order = 0)]
         [BsonRepresentation(BsonType.ObjectId)]
         [BsonIgnoreIfDefault]
-        public string Id { get; set; }
+        public string DocumentId { get; set; }
 
         public Guid Identifier { get; set; }
         public DateTime CreatedOn { get; set; }
-        
-        public IDocument<Guid> Update(IDocument<Guid> update)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

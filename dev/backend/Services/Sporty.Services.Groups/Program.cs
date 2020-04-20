@@ -1,4 +1,5 @@
 using System;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +28,7 @@ namespace Sporty.Services.Groups
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureHostConfiguration(configBuilder =>
                     configBuilder.AddJsonFile("appsettings.Logs.json", true, true)
                 )

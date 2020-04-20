@@ -1,4 +1,6 @@
 using AspNetCoreRateLimit;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using AutoMapper;
 using AutoWrapper;
 using FluentValidation.AspNetCore;
@@ -7,7 +9,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MongoDB.Driver;
 using Sporty.Infra.Data.Accessor.Mongo.Models;
+using Sporty.Infra.Data.Accessor.RabbitMQ.Extensions;
+using Sporty.Infra.Data.Accessor.RabbitMQ.Implementations;
 using Sporty.Services.Users.Bootstrap;
 using Sporty.Services.Users.DTO.Mapping;
 
@@ -32,6 +37,7 @@ namespace Sporty.Services.Users
 
             services.AddOptions();
             services.Configure<MongoConfiguration>(Configuration.GetSection(nameof(MongoConfiguration)));
+            services.Configure<EventsBusConfiguration>(Configuration.GetSection(nameof(EventsBusConfiguration)));
 
             //Register services in Installers folder
             services.AddServicesInAssembly(Configuration);
@@ -44,6 +50,13 @@ namespace Sporty.Services.Users
             //Register Automapper
             services.AddAutoMapper(typeof(MappingProfileConfiguration));
 
+            services.AddEventBusConnection(Configuration)
+                    .AddEventBus(Configuration);
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            // Register your own things directly with Autofac, like: event handlers
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

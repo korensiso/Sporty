@@ -1,4 +1,9 @@
+using System;
+using System.Linq;
+using System.Reflection;
 using AspNetCoreRateLimit;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using AutoMapper;
 using AutoWrapper;
 using FluentValidation.AspNetCore;
@@ -7,9 +12,16 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Sporty.Common.Dto.Events.User;
 using Sporty.Infra.Data.Accessor.Mongo.Models;
+using Sporty.Infra.Data.Accessor.RabbitMQ.Extensions;
+using Sporty.Infra.Data.Accessor.RabbitMQ.Implementations;
+using Sporty.Infra.Data.Accessor.RabbitMQ.Interfaces;
+using Sporty.Infra.WebApi.Contracts;
 using Sporty.Services.Groups.Bootstrap;
 using Sporty.Services.Groups.DTO.Mapping;
+using Sporty.Services.Groups.Events.Handlers;
 
 namespace Sporty.Services.Groups
 {
@@ -32,6 +44,7 @@ namespace Sporty.Services.Groups
 
             services.AddOptions();
             services.Configure<MongoConfiguration>(Configuration.GetSection(nameof(MongoConfiguration)));
+            services.Configure<EventsBusConfiguration>(Configuration.GetSection(nameof(EventsBusConfiguration)));
 
             //Register services in Installers folder
             services.AddServicesInAssembly(Configuration);
@@ -43,6 +56,15 @@ namespace Sporty.Services.Groups
 
             //Register AutoMapper
             services.AddAutoMapper(typeof(MappingProfileConfiguration));
+
+            services.AddEventBusConnection(Configuration)
+                    .AddEventBus(Configuration);
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            // Register your own things directly with Autofac, like:
+            builder.RegisterType<UserCreatedEventHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -89,7 +111,7 @@ namespace Sporty.Services.Groups
             //Enable CORS
             app.UseCors("AllowAll");
 
-            //Adds authenticaton middleware to the pipeline so authentication will be performed automatically on each request to host
+            //Adds authentication middleware to the pipeline so authentication will be performed automatically on each request to host
             app.UseAuthentication();
 
             //Adds authorization middleware to the pipeline to make sure the Api endpoint cannot be accessed by anonymous clients
@@ -99,6 +121,15 @@ namespace Sporty.Services.Groups
             {
                 endpoints.MapControllers();
             });
+
+            SubscribeEvents(app);
+        }
+
+        private static void SubscribeEvents(IApplicationBuilder app)
+        {
+            IEventBus eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
+
+            eventBus.Subscribe<UserCreatedEvent, UserCreatedEventHandler>();
         }
     }
 }

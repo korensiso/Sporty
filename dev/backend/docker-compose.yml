@@ -5,6 +5,9 @@ services:
   nosqldata:
     image: mongo
 
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+
   sporty.services.groups:
     image: ${DOCKER_REGISTRY-}sportyservicesgroups
     build:
@@ -12,6 +15,7 @@ services:
       dockerfile: Services/Sporty.Services.Groups/Dockerfile
     depends_on:
       - nosqldata
+      - rabbitmq
 
   sporty.services.users:
     image: ${DOCKER_REGISTRY-}sportyservicesusers
@@ -20,4 +24,5 @@ services:
       dockerfile: Services/Sporty.Services.Users/Dockerfile
     depends_on:
       - nosqldata
+      - rabbitmq
 

@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using AutoMapper;
+using Sporty.Common.Dto.Events.User;
 using Sporty.Common.Dto.User.Model;
 using Sporty.Common.Dto.User.Request;
 using Sporty.Common.Dto.User.Response;
@@ -14,6 +15,7 @@ namespace Sporty.Services.Users.DTO.Mapping
             CreateMap<User, CreateUserRequest>().ReverseMap();
             CreateMap<User, UpdateUserRequest>().ReverseMap();
             CreateMap<User, UserQueryResponse>().ReverseMap();
+            CreateMap<User, UserCreatedEvent>().ReverseMap();
         }
     }
 }

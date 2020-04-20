@@ -6,6 +6,11 @@ services:
     ports:
       - "27017:27017"  # Important: In a production environment your should remove the external port
 
+  rabbitmq:
+    ports:
+      - "15672:15672"  # Important: In a production environment your should remove the external port
+      - "5672:5672"    # Important: In a production environment your should remove the external port
+
   nosqldata.client:
     image: mongo-express
     ports:
@@ -21,6 +26,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
+      - EventBusConnection=localhost
     ports:
       - "8082:80"
       - "44322:443"
@@ -32,6 +38,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
+      - EventBusConnection=localhost
     ports:
       - "8083:80"
       - "44323:443"

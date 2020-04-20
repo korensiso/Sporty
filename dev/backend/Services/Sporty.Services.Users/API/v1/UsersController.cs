@@ -6,13 +6,12 @@ using AutoMapper;
 using AutoWrapper.Wrappers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Sporty.Common.Dto.Events.User;
 using Sporty.Common.Dto.User.Model;
 using Sporty.Common.Dto.User.Request;
 using Sporty.Common.Dto.User.Response;
 using Sporty.Common.Network.Http.QueryUrl;
-using Sporty.Services.Users.DTO.Request;
-using Sporty.Services.Users.DTO.Request.Validation;
-using Sporty.Services.Users.DTO.Response;
+using Sporty.Infra.Data.Accessor.RabbitMQ.Interfaces;
 using Sporty.Services.Users.Manager;
 using static Microsoft.AspNetCore.Http.StatusCodes;
 
@@ -25,11 +24,14 @@ namespace Sporty.Services.Users.API.v1
         private readonly ILogger<UsersController> _logger;
         private readonly IUserManager _userManager;
         private readonly IMapper _mapper;
-        public UsersController(IUserManager userManager, IMapper mapper, ILogger<UsersController> logger)
+        private readonly IEventBus _eventBus;
+
+        public UsersController(IUserManager userManager, IMapper mapper, IEventBus eventBus, ILogger<UsersController> logger)
         {
             _userManager = userManager;
             _mapper = mapper;
             _logger = logger;
+            _eventBus = eventBus;
         }
 
         [HttpGet]
@@ -74,7 +76,13 @@ namespace Sporty.Services.Users.API.v1
             if (!ModelState.IsValid) { throw new ApiProblemDetailsException(ModelState); }
 
             User user = _mapper.Map<User>(createRequest);
-            return new ApiResponse("Record successfully created.", await _userManager.CreateAsync(user), Status201Created);
+            Guid result = await _userManager.CreateAsync(user);
+            user = await _userManager.GetByIdAsync(user.Identifier);
+
+            UserCreatedEvent userCreatedEvent = _mapper.Map<UserCreatedEvent>(user);
+            _eventBus.Publish(userCreatedEvent);
+
+            return new ApiResponse("Record successfully created.", result, Status201Created);
         }
 
         [Route("{id:Guid}")]
