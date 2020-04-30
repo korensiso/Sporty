@@ -14,7 +14,11 @@ namespace Sporty.Infra.WebApi.Installers
             //See: https://www.scottbrady91.com/Identity-Server/ASPNET-Core-Swagger-UI-Authorization-using-IdentityServer4
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "[Name]Service ASP.NET Core API", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = $"{config["ServiceName"] } ASP.NET Core API Documentation", 
+                    Version = "v1",
+                });
 
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {

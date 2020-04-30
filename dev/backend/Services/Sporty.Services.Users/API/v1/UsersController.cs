@@ -7,11 +7,11 @@ using AutoWrapper.Wrappers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Sporty.Common.Dto.Events.User;
-using Sporty.Common.Dto.User.Model;
-using Sporty.Common.Dto.User.Request;
-using Sporty.Common.Dto.User.Response;
 using Sporty.Common.Network.Http.QueryUrl;
 using Sporty.Infra.Data.Accessor.RabbitMQ.Interfaces;
+using Sporty.Services.Users.DTO.Model;
+using Sporty.Services.Users.DTO.Request;
+using Sporty.Services.Users.DTO.Response;
 using Sporty.Services.Users.Manager;
 using static Microsoft.AspNetCore.Http.StatusCodes;
 

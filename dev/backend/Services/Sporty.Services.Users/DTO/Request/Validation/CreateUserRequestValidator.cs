@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using Sporty.Common.Dto.User.Request;
 
 namespace Sporty.Services.Users.DTO.Request.Validation
 {

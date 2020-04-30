@@ -1,0 +1,85 @@
+2020-04-25T10:34:13.4856473+03:00 [INF] (Sporty.Services.Groups.Program) Starting web host - Sporty.Services.Groups
+2020-04-25T10:34:14.0072059+03:00 [INF] (Sporty.Infra.Data.Accessor.RabbitMQ.Implementations.RabbitMQPersistentConnection) RabbitMQ Client is trying to connect
+2020-04-25T11:27:18.1638586+03:00 [INF] (Sporty.Services.Groups.Program) Starting web host - Sporty.Services.Groups
+2020-04-25T11:28:50.9161164+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: POST https localhost:44322/api/v1/Groups  {"name":"Goaltime"} 
+                                                     Responded with [500] in 46444ms
+2020-04-25T11:31:01.3819852+03:00 [INF] (Sporty.Services.Groups.Program) Starting web host - Sporty.Services.Groups
+2020-04-25T11:31:30.1047215+03:00 [INF] (Sporty.Services.Groups.Manager.GroupManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T11:31:30.1352047+03:00 [INF] (Sporty.Services.Groups.Manager.MemberManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T11:31:30.8926446+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: POST https localhost:44322/api/v1/Groups  {"name":"koren group"} 
+                                                     Responded with [201] in 4282ms
+2020-04-25T11:36:31.3823390+03:00 [INF] (Sporty.Services.Groups.Manager.GroupManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T11:36:31.3833723+03:00 [INF] (Sporty.Services.Groups.Manager.MemberManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T15:41:02.5534935+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: PUT https localhost:44322/api/v1/Groups/a1212c1b-5856-3b48-9201-f39d724372a0/Members/a1212c1b-5856-3b48-9201-f39d724372a0   
+                                                     Responded with [404] in 14676457ms
+2020-04-25T15:41:12.4695574+03:00 [INF] (Sporty.Services.Groups.Manager.GroupManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T15:41:12.4706349+03:00 [INF] (Sporty.Services.Groups.Manager.MemberManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T15:41:12.5887163+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44322/api/v1/Groups   
+                                                     Responded with [200] in 2896ms
+2020-04-25T15:42:07.0099826+03:00 [INF] (Sporty.Services.Groups.Manager.GroupManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T15:42:07.0119480+03:00 [INF] (Sporty.Services.Groups.Manager.MemberManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T15:42:07.0823898+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44322/api/v1/Groups/1b2c21a1-5658-483b-9201-f39d724372a0/Members/a1212c1b-5856-3b48-9201-f39d724372a1   
+                                                     Responded with [404] in 3348ms
+2020-04-25T15:43:10.9225409+03:00 [INF] (Sporty.Services.Groups.Manager.GroupManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T15:43:10.9240503+03:00 [INF] (Sporty.Services.Groups.Manager.MemberManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T15:54:26.6098862+03:00 [INF] (Sporty.Services.Groups.Program) Starting web host - Sporty.Services.Groups
+2020-04-25T15:54:38.9487150+03:00 [INF] (Sporty.Services.Groups.Manager.GroupManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T15:54:38.9548164+03:00 [INF] (Sporty.Services.Groups.Manager.MemberManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T15:54:39.5918934+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44322/api/v1/Groups   
+                                                     Responded with [200] in 7121ms
+2020-04-25T15:54:53.7611600+03:00 [INF] (Sporty.Services.Groups.Manager.GroupManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T15:54:53.7625126+03:00 [INF] (Sporty.Services.Groups.Manager.MemberManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T15:54:53.8282091+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44322/api/v1/Groups/1b2c21a1-5658-483b-9201-f39d724372a0/Members   
+                                                     Responded with [200] in 1913ms
+2020-04-25T15:55:54.7452367+03:00 [INF] (Sporty.Services.Groups.Manager.GroupManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T15:55:54.7465266+03:00 [INF] (Sporty.Services.Groups.Manager.MemberManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T15:56:15.9620157+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: PUT https localhost:44322/api/v1/Groups/1b2c21a1-5658-483b-9201-f39d724372a0/Members/a1212c1b-5856-3b48-9201-f39d724372a1   
+                                                     Responded with [404] in 21235ms
+2020-04-25T15:56:25.1675249+03:00 [INF] (Sporty.Services.Groups.Manager.GroupManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T15:56:25.1686828+03:00 [INF] (Sporty.Services.Groups.Manager.MemberManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T15:58:07.4377099+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: PUT https localhost:44322/api/v1/Groups/1b2c21a1-5658-483b-9201-f39d724372a0/Members/a1212c1b-5856-3b48-9201-f39d724372a1   
+                                                     Responded with [404] in 102266ms
+2020-04-25T15:58:41.1399547+03:00 [INF] (Sporty.Services.Groups.Program) Starting web host - Sporty.Services.Groups
+2020-04-25T15:59:04.2464765+03:00 [INF] (Sporty.Services.Groups.Manager.GroupManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T15:59:04.2522264+03:00 [INF] (Sporty.Services.Groups.Manager.MemberManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T16:01:04.3165913+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: PUT https localhost:44322/api/v1/Groups/1b2c21a1-5658-483b-9201-f39d724372a0/Members/a1212c1b-5856-3b48-9201-f39d724372a1   
+                                                     Responded with [404] in 120772ms
+2020-04-25T16:11:24.1271346+03:00 [INF] (Sporty.Services.Groups.Program) Starting web host - Sporty.Services.Groups
+2020-04-25T16:12:06.8727368+03:00 [INF] (Sporty.Services.Groups.Manager.GroupManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T16:12:48.5566093+03:00 [INF] (Sporty.Services.Groups.Manager.MemberManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T16:14:15.9313123+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: PUT https localhost:44322/api/v1/Groups/1b2c21a1-5658-483b-9201-f39d724372a0/Members/1b2c21a1-5658-483b-9201-f39d724372a1   
+                                                     Responded with [200] in 129683ms
+2020-04-25T16:14:32.0190362+03:00 [INF] (Sporty.Services.Groups.Manager.GroupManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T16:14:33.8869750+03:00 [INF] (Sporty.Services.Groups.Manager.MemberManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T16:14:33.9243152+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44322/api/v1/Groups/1b2c21a1-5658-483b-9201-f39d724372a0/Members   
+                                                     Responded with [200] in 3634ms
+2020-04-25T16:14:45.8567670+03:00 [INF] (Sporty.Services.Groups.Manager.GroupManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T16:14:47.4752789+03:00 [INF] (Sporty.Services.Groups.Manager.MemberManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T16:14:47.5098657+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44322/api/v1/Groups   
+                                                     Responded with [200] in 1662ms
+2020-04-25T16:15:39.4404975+03:00 [INF] (Sporty.Services.Groups.Manager.GroupManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T16:15:41.5189768+03:00 [INF] (Sporty.Services.Groups.Manager.MemberManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T16:16:58.0628108+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44322/api/v1/Groups   
+                                                     Responded with [200] in 78619ms
+2020-04-25T16:18:20.9583098+03:00 [INF] (Sporty.Services.Groups.Manager.GroupManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T16:18:28.5927632+03:00 [INF] (Sporty.Services.Groups.Manager.MemberManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T16:24:47.1883061+03:00 [INF] (Sporty.Services.Groups.Program) Starting web host - Sporty.Services.Groups
+2020-04-25T16:24:55.2055527+03:00 [INF] (Sporty.Services.Groups.Manager.GroupManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T16:24:57.1113915+03:00 [INF] (Sporty.Services.Groups.Manager.MemberManager) Initiated connection: ConnectionString=mongodb://localhost:27017, DatabaseName=sporty_groups
+2020-04-25T16:25:08.5534014+03:00 [INF] (AutoWrapper.AutoWrapperMiddleware) Source:[::1] 
+                                                     Request: GET https localhost:44322/api/v1/Groups   
+                                                     Responded with [200] in 13987ms

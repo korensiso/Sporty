@@ -9,6 +9,7 @@ namespace Sporty.Services.Groups.Manager
         public void RegisterAppServices(IServiceCollection services, IConfiguration config)
         {
             //Register Interface Mappings for Repositories
+            services.AddTransient<IMemberManager, MemberManager>();
             services.AddTransient<IGroupManager, GroupManager>();
         }
     }

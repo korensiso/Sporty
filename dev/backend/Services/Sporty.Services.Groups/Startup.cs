@@ -28,15 +28,24 @@ namespace Sporty.Services.Groups
     internal class Startup
     {
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment Environment { get; set; }
 
-        public Startup(IConfiguration configuration)
+        public Startup(IWebHostEnvironment environment, IConfiguration configuration)
         {
+            Environment = environment;
             Configuration = configuration;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+//            IMvcBuilder builder = services.AddRazorPages();
+//#if DEBUG
+//            if (Environment.IsDevelopment())
+//            {
+//                builder.AddRazorRuntimeCompilation();
+//            }
+//#endif
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", false, true)
                 .AddEnvironmentVariables()
@@ -84,9 +93,10 @@ namespace Sporty.Services.Groups
 
             //Enable Swagger and SwaggerUI
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
+            app.UseSwaggerUI(swaggerUiOptions =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "GroupsService ASP.NET Core API v1");
+                swaggerUiOptions.DocumentTitle = Configuration["ServiceName"] + ":Swagger";
+                swaggerUiOptions.SwaggerEndpoint("/swagger/v1/swagger.json", $"{Configuration["ServiceName"]} ASP.NET Core API v1");
             });
 
             //Enable HealthChecks and UI

@@ -1,9 +1,9 @@
 ﻿using System.Runtime.CompilerServices;
 using AutoMapper;
 using Sporty.Common.Dto.Events.User;
-using Sporty.Common.Dto.User.Model;
-using Sporty.Common.Dto.User.Request;
-using Sporty.Common.Dto.User.Response;
+using Sporty.Services.Users.DTO.Model;
+using Sporty.Services.Users.DTO.Request;
+using Sporty.Services.Users.DTO.Response;
 
 [assembly: InternalsVisibleTo("Sporty.Services.Users.Tests")]
 namespace Sporty.Services.Users.DTO.Mapping

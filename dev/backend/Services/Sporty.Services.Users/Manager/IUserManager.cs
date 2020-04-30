@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Sporty.Common.Dto.User.Model;
 using Sporty.Common.Network.Http.QueryUrl;
 using Sporty.Services.Users.Contracts;
+using Sporty.Services.Users.DTO.Model;
 
 namespace Sporty.Services.Users.Manager
 {

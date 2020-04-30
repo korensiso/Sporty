@@ -16,5 +16,10 @@ namespace Sporty.Infra.Data.Accessor.Mongo.Repository
 
         public Guid Identifier { get; set; }
         public DateTime CreatedOn { get; set; }
+
+        public override string ToString()
+        {
+            return $"Identifier={Identifier}";
+        }
     }
 }

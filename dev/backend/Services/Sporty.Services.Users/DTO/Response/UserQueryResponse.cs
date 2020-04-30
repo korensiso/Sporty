@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sporty.Common.Dto.User.Response
+namespace Sporty.Services.Users.DTO.Response
 {
     public class UserQueryResponse
     {

@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Sporty.Common.Dto.Group.Request;
 using Sporty.Infra.WebApi.Contracts;
 
 namespace Sporty.Services.Groups.DTO.Request.Validation
@@ -14,7 +13,7 @@ namespace Sporty.Services.Groups.DTO.Request.Validation
             //Register DTO Validators
             services.AddTransient<IValidator<CreateGroupRequest>, CreateGroupRequestValidator>();
             services.AddTransient<IValidator<UpdateGroupRequest>, UpdateGroupRequestValidator>();
-            services.AddTransient<IValidator<UpdateGroupUsersRequest>, UpdateGroupUsersRequestValidator>();
+            services.AddTransient<IValidator<UpdateGroupMembersRequest>, UpdateGroupMembersRequestValidator>();
 
             //Disable Automatic Model State Validation built-in to ASP.NET Core
             services.Configure<ApiBehaviorOptions>(opt => { opt.SuppressModelStateInvalidFilter = true; });

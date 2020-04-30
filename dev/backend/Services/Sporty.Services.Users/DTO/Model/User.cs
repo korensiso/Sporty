@@ -2,7 +2,7 @@
 using Sporty.Infra.Data.Accessor.Mongo.Interfaces;
 using Sporty.Infra.Data.Accessor.Mongo.Repository;
 
-namespace Sporty.Common.Dto.User.Model
+namespace Sporty.Services.Users.DTO.Model
 {
     public class User : Document, IUpdateable<User>
     {

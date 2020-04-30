@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Sporty.Common.Dto.User.Model;
 using Sporty.Common.Network.Http.QueryUrl;
 using Sporty.Infra.Data.Accessor.Mongo.Models;
 using Sporty.Infra.Data.Accessor.Mongo.Repository;
+using Sporty.Services.Users.DTO.Model;
 
 namespace Sporty.Services.Users.Manager
 {

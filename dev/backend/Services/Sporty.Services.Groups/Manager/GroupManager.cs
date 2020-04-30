@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Sporty.Common.Dto.Group.Model;
 using Sporty.Common.Network.Http.QueryUrl;
 using Sporty.Infra.Data.Accessor.Mongo.Models;
 using Sporty.Infra.Data.Accessor.Mongo.Repository;
+using Sporty.Services.Groups.DTO.Model;
 
 namespace Sporty.Services.Groups.Manager
 {
@@ -18,7 +18,7 @@ namespace Sporty.Services.Groups.Manager
         private readonly MongoRepository<Group, Guid> _groupsRepo;
 
         public GroupManager(IOptions<MongoConfiguration> options, ILogger<GroupManager> logger)
-        {
+            {
             MongoConfiguration mongoConfiguration = options.Value;
 
             _logger = logger;
@@ -50,11 +50,10 @@ namespace Sporty.Services.Groups.Manager
 
         public async Task<bool> UpdateAsync(Group entity)
         {
-            Group currentGroup = await GetByIdAsync(entity.Identifier);
-            if (currentGroup == null) return false;
+            Group groupToUpdate = await GetByIdAsync(entity.Identifier);
+            if (groupToUpdate == null) return false;
 
-            long modified = await _groupsRepo.UpdateAsync(group => group.Identifier == entity.Identifier, 
-                currentGroup.Update(entity));
+            long modified = await _groupsRepo.UpdateAsync(group => group.Identifier == entity.Identifier, entity);
             
             return modified != 0;
         }
@@ -86,18 +85,39 @@ namespace Sporty.Services.Groups.Manager
             return (groups, metadata);
         }
 
-        public async Task<bool> UpdateGroupUsersAsync(Guid id, IEnumerable<Guid> users)
+        public async Task<(int groupUpdated, int memberUpdated)> AddGroupMembersAsync(Guid id, IEnumerable<Guid> members)
         {
-            Group currentGroup = await GetByIdAsync(id);
-            if (currentGroup == null) return false;
+            Group groupToUpdate = await GetByIdAsync(id);
+            if (groupToUpdate == null) return (0,0);
 
-            foreach (Guid user in users)
+            int updateCounter = 0;
+            foreach (Guid member in members)
             {
-                currentGroup.AddUser(user);
+                if (!groupToUpdate.ContainsMember(member))
+                {
+                    groupToUpdate.AddMember(member);
+                }
+                updateCounter++;
             }
-            long modified = await _groupsRepo.UpdateAsync(group => group.Identifier == id, currentGroup);
+            long modified = await _groupsRepo.UpdateAsync(group => group.Identifier == id, groupToUpdate);
 
-            return modified != 0;
+            return ((int) modified, updateCounter);
+        }
+
+        public async Task<(int groupUpdated, int memberUpdated)> DeleteGroupMembersAsync(Guid id, IEnumerable<Guid> members)
+        {
+            Group groupToUpdate = await GetByIdAsync(id);
+            if (groupToUpdate == null) return (0, 0);
+
+            int updateCounter = 0;
+            foreach (Guid member in members)
+            {
+                groupToUpdate.RemoveMember(member);
+                updateCounter++;
+            }
+            long modified = await _groupsRepo.UpdateAsync(group => group.Identifier == id, groupToUpdate);
+
+            return ((int)modified, updateCounter);
         }
     }
 }

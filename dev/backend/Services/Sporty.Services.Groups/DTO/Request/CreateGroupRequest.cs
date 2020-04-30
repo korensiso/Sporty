@@ -1,4 +1,4 @@
-﻿namespace Sporty.Common.Dto.Group.Request
+﻿namespace Sporty.Services.Groups.DTO.Request
 {
     public class CreateGroupRequest
     {

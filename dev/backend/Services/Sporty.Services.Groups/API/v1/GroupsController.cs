@@ -6,10 +6,11 @@ using AutoMapper;
 using AutoWrapper.Wrappers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Sporty.Common.Dto.Group.Model;
-using Sporty.Common.Dto.Group.Request;
-using Sporty.Common.Dto.Group.Response;
+using Sporty.Common.Network.Http.Headers;
 using Sporty.Common.Network.Http.QueryUrl;
+using Sporty.Services.Groups.DTO.Model;
+using Sporty.Services.Groups.DTO.Request;
+using Sporty.Services.Groups.DTO.Response;
 using Sporty.Services.Groups.Manager;
 using static Microsoft.AspNetCore.Http.StatusCodes;
 
@@ -21,10 +22,13 @@ namespace Sporty.Services.Groups.API.v1
     {
         private readonly ILogger<GroupsController> _logger;
         private readonly IGroupManager _groupManager;
+        private readonly IMemberManager _memberManager;
         private readonly IMapper _mapper;
-        public GroupsController(IGroupManager groupManager, IMapper mapper, ILogger<GroupsController> logger)
+
+        public GroupsController(IGroupManager groupManager, IMemberManager memberManager, IMapper mapper, ILogger<GroupsController> logger)
         {
             _groupManager = groupManager;
+            _memberManager = memberManager;
             _mapper = mapper;
             _logger = logger;
         }
@@ -52,15 +56,17 @@ namespace Sporty.Services.Groups.API.v1
             return groups;
         }
 
-        [Route("{id:Guid}")]
+        [Route("{groupId:Guid}")]
         [HttpGet]
         [ProducesResponseType(typeof(GroupQueryResponse), Status200OK)]
         [ProducesResponseType(typeof(GroupQueryResponse), Status404NotFound)]
-        public async Task<GroupQueryResponse> Get(Guid id)
+        public async Task<GroupQueryResponse> Get(Guid groupId, [FromQuery]GroupsQueryUrl groupsQuery)
         {
-            Group group = await _groupManager.GetByIdAsync(id);
+            Group group = await _groupManager.GetByIdAsync(groupId);
+            if (!groupsQuery.IncludeMembers) group.Members.Clear();
+
             return group != null ? _mapper.Map<GroupQueryResponse>(group)
-                                  : throw new ApiProblemDetailsException($"Record with id: {id} does not exist.", Status404NotFound);
+                                  : throw new ApiProblemDetailsException($"Record with groupId: {groupId} does not exist.", Status404NotFound);
         }
 
         [HttpPost]
@@ -74,58 +80,38 @@ namespace Sporty.Services.Groups.API.v1
             return new ApiResponse("Record successfully created.", await _groupManager.CreateAsync(group), Status201Created);
         }
 
-        [Route("{id:Guid}")]
+        [Route("{groupId:Guid}")]
         [HttpPut]
         [ProducesResponseType(typeof(ApiResponse), Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), Status404NotFound)]
         [ProducesResponseType(typeof(ApiResponse), Status422UnprocessableEntity)]
-        public async Task<ApiResponse> Put(Guid id, [FromBody] UpdateGroupRequest updateRequest)
+        public async Task<ApiResponse> Put(Guid groupId, [FromBody] UpdateGroupRequest updateRequest)
         {
             if (!ModelState.IsValid) { throw new ApiProblemDetailsException(ModelState); }
 
             Group group = _mapper.Map<Group>(updateRequest);
-            group.Identifier = id;
+            group.Identifier = groupId;
 
             if (await _groupManager.UpdateAsync(group))
             {
-                return new ApiResponse($"Record with Id: {id} successfully updated.", true);
+                return new ApiResponse($"Record with Id: {groupId} successfully updated.", true);
             }
 
-            throw new ApiProblemDetailsException($"Record with Id: {id} does not exist.", Status404NotFound);
+            throw new ApiProblemDetailsException($"Record with Id: {groupId} does not exist.", Status404NotFound);
         }
 
-        //[Route("{id:Guid/users}")]
-        //[HttpPut]
-        //[ProducesResponseType(typeof(ApiResponse), Status200OK)]
-        //[ProducesResponseType(typeof(ApiResponse), Status404NotFound)]
-        //[ProducesResponseType(typeof(ApiResponse), Status422UnprocessableEntity)]
-        //public async Task<ApiResponse> Put(Guid id, [FromBody] UpdateGroupUsersRequest updateGroupUsersRequest)
-        //{
-        //    if (!ModelState.IsValid) { throw new ApiProblemDetailsException(ModelState); }
-
-        //    if (await _groupManager.UpdateGroupUsersAsync(id, updateGroupUsersRequest.Users))
-        //    {
-        //        return new ApiResponse($"Record with Id: {id} successfully updated.", true);
-        //    }
-
-        //    throw new ApiProblemDetailsException($"Record with Id: {id} does not exist.", Status404NotFound);
-        //}
-
-
-        [Route("{id:Guid}")]
+        [Route("{groupId:Guid}")]
         [HttpDelete]
         [ProducesResponseType(typeof(ApiResponse), Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), Status404NotFound)]
-        public async Task<ApiResponse> Delete(Guid id)
+        public async Task<ApiResponse> Delete(Guid groupId)
         {
-            if (await _groupManager.DeleteAsync(id))
+            if (await _groupManager.DeleteAsync(groupId))
             {
-                return new ApiResponse($"Record with Id: {id} successfully deleted.", true);
+                return new ApiResponse($"Record with Id: {groupId} successfully deleted.", true);
             }
-            else
-            {
-                throw new ApiProblemDetailsException($"Record with id: {id} does not exist.", Status404NotFound);
-            }
+
+            throw new ApiProblemDetailsException($"Record with groupId: {groupId} does not exist.", Status404NotFound);
         }
     }
 }

@@ -4,14 +4,14 @@ using MongoDB.Bson.Serialization.Attributes;
 using Sporty.Infra.Data.Accessor.Mongo.Interfaces;
 using Sporty.Infra.Data.Accessor.Mongo.Repository;
 
-namespace Sporty.Common.Dto.Group.Model
+namespace Sporty.Services.Groups.DTO.Model
 {
     public class Group : Document, IUpdateable<Group>
     {
         public string Name { get; set; }
 
-        [BsonElement("Users", Order = 0)]
-        public List<Guid> Users { get; } = new List<Guid>();
+        [BsonElement("Members", Order = 0)]
+        public List<Guid> Members { get; set; } = new List<Guid>();
 
         public Group Update(Group update)
         {
@@ -20,14 +20,19 @@ namespace Sporty.Common.Dto.Group.Model
             return this;
         }
 
-        public void AddUser(Guid id)
+        public void AddMember(Guid id)
         {
-            Users.Add(id);
+            Members.Add(id);
         }
 
-        public bool RemoveUser(Guid id)
+        public bool ContainsMember(Guid id)
         {
-            return Users.Remove(id);
+            return Members.Contains(id);
+        }
+
+        public bool RemoveMember(Guid id)
+        {
+            return Members.Remove(id);
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Sporty.Common.Dto.User.Request
+namespace Sporty.Services.Users.DTO.Request
 {
-    public class UpdateUserRequest
+    public class CreateUserRequest
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

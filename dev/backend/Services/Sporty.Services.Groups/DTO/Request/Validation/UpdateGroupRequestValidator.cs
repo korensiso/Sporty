@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using Sporty.Common.Dto.Group.Request;
 
 namespace Sporty.Services.Groups.DTO.Request.Validation
 {
@@ -9,5 +8,7 @@ namespace Sporty.Services.Groups.DTO.Request.Validation
         {
             RuleFor(o => o.Name).MaximumLength(15).NotEmpty();
         }
+
+
     }
 }

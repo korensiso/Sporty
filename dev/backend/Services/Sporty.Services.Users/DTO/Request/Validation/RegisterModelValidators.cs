@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Sporty.Common.Dto.User.Request;
 using Sporty.Infra.WebApi.Contracts;
 
 namespace Sporty.Services.Users.DTO.Request.Validation
